@@ -8,8 +8,8 @@ With[
         RE = RegularExpression,
         RB = RowBox,
 
-        CLS = InputShortcuts`Helper`CombineLeadingSpaces,
         INSD = InputShortcuts`Helper`InputNotebookSelectionData,
+        CLS = InputShortcuts`Helper`CombineLeadingSpaces,
     
         DI = InputShortcuts`DecreaseIndent
     },
@@ -22,7 +22,7 @@ With[
             NotebookWrite[
                 InputNotebook[],
                 CLS[sel]
-                    /. s_String :> StringReplace[s, RE["^\n([ 	]*)    $"] -> "\n$1"]
+                    /. s_String :> StringReplace[s, RE["^(.*\n[ 	]*)    $"] -> "$1"]
                     /. RB[{s_String, x__}]
                         :> RB[{ StringReplace[s, RE["^([ 	]*)    $"] -> "$1"], x }],
                 All

@@ -8,8 +8,8 @@ With[
         RE = RegularExpression,
         FETE = FrontEndTokenExecute,
 
-        LT = InputShortcuts`Helper`LastToken,
         INSD = InputShortcuts`Helper`InputNotebookSelectionData,
+        LT = InputShortcuts`Helper`LastToken,
 
         ADP = InputShortcuts`AdvancedDeletePrevious
     },
@@ -27,7 +27,7 @@ With[
             
             tok = LT @ INSD[];
             FETE["MoveNext"];
-            \[Not] StringMatchQ[ tok, RE["^[ 	]*$"] ],
+            \[Not] StringMatchQ[ tok, RE["^(.*\n)?[ 	]*$"] ],
             FETE["DeletePrevious"],
             
             True,
@@ -35,7 +35,7 @@ With[
                 FETE["DeletePrevious"],
                 { i, StringLength @ StringReplace[
                     tok,
-                    RE["^(	|    )*([ 	]+)$"] -> "$2"
+                    RE["^(.*\n)?(	|    )*([ 	]+)$"] -> "$3"
                 ] }
             ]
         ]
