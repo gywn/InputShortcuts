@@ -7,8 +7,8 @@ With[
     {
         FETE = FrontEndTokenExecute,
 
-        FT = InputShortcuts`Helper`FirstToken,
         INSD = InputShortcuts`Helper`InputNotebookSelectionData,
+        FT = InputShortcuts`Helper`FirstToken,
 
         MLRB = InputShortcuts`MoveLineRealBeginning
     },
