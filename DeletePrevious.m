@@ -11,10 +11,10 @@ With[
         INSD = InputShortcuts`Helper`InputNotebookSelectionData,
         LT = InputShortcuts`Helper`LastToken,
 
-        ADP = InputShortcuts`AdvancedDeletePrevious
+        DP = InputShortcuts`DeletePrevious
     },
 
-    ADP[] := Module[
+    DP[] := Module[
         {tok},
 
         Which[

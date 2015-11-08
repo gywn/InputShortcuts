@@ -10,7 +10,7 @@ Begin["InputShortcuts`Private`"];
 
 << "InputShortcuts/DecreaseIndent.m"
 << "InputShortcuts/IncreaseIndent.m"
-<< "InputShortcuts/AdvancedDeletePrevious.m"
+<< "InputShortcuts/DeletePrevious.m"
 << "InputShortcuts/MoveLineRealBeginning.m"
 << "InputShortcuts/SelectWholeLineDown.m"
 << "InputShortcuts/SelectWholeLineUp.m"
