@@ -8,9 +8,9 @@ With[
         RE = RegularExpression,
         RB = RowBox,
         ACV = AbsoluteCurrentValue,
-        
+
         CLS = InputShortcuts`Helper`CombineLeadingSpaces,
-        
+
         II = InputShortcuts`IncreaseIndent
     },
 
@@ -19,7 +19,7 @@ With[
             nb = InputNotebook[],
             sel = ACV[ InputNotebook[], "SelectionData" ]
         },
-        
+
         If[
             sel =!= $Failed,
             NotebookWrite[
@@ -28,7 +28,7 @@ With[
                     /. s_String :> StringReplace[s, RE["^\n([ 	]*)$"] -> "\n$1    "]
                     /. RB[{x__}] :> RB[{"    ", x}]
                     /. RB[{x__, s_String}]
-                        :> RB[{ x, StringReplace[s, RE["^\n([ 	]*)    $"] -> "\n$1"] }],  
+                        :> RB[{ x, StringReplace[s, RE["^\n([ 	]*)    $"] -> "\n$1"] }],
                 All
             ]
         ];

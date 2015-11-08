@@ -8,9 +8,9 @@ With[
         RE = RegularExpression,
         RB = RowBox,
         ACV = AbsoluteCurrentValue,
-        
+
         CLS = InputShortcuts`Helper`CombineLeadingSpaces,
-        
+
         DI = InputShortcuts`DecreaseIndent
     },
 
@@ -19,7 +19,7 @@ With[
             nb = InputNotebook[],
             sel = ACV[ InputNotebook[], "SelectionData" ]
         },
-    
+
         If[
             sel =!= $Failed,
             NotebookWrite[

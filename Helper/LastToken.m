@@ -6,7 +6,7 @@ Begin["InputShortcuts`Private`"];
 With[
     {
         RB = RowBox,
-        
+
         LT = InputShortcuts`Helper`LastToken
     },
 

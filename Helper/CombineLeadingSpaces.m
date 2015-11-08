@@ -7,7 +7,7 @@ With[
     {
         RE = RegularExpression,
         RB = RowBox,
-        
+
         CLS = InputShortcuts`Helper`CombineLeadingSpaces
     },
 

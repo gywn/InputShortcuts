@@ -7,9 +7,9 @@ With[
     {
         ACV = AbsoluteCurrentValue,
         FETE = FrontEndTokenExecute,
-        
+
         FT = InputShortcuts`Helper`FirstToken,
-        
+
         MLRB = InputShortcuts`MoveLineRealBeginning
     },
 
@@ -20,7 +20,7 @@ With[
             curr = $Failed,
             fc
         },
-        
+
         FETE["MoveLineBeginning"];
         While[
             FETE["SelectPrevious"];
@@ -31,10 +31,10 @@ With[
         Which[
             curr === $Failed,
             Null,
-            
+
             FT[curr] === "\n",
             FETE["MovePrevious"]; FETE["MoveNext"],
-            
+
             True,
             FETE["MovePrevious"]
         ];
