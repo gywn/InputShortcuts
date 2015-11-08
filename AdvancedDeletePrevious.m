@@ -16,34 +16,30 @@ With[
     },
 
     ADP[] := Module[
-        { sel },
+        {tok},
 
-        If[
+        Which[
             INSD[] =!= $Failed,
-
             FETE["DeletePrevious"],
-
+            
             FETE["SelectPreviousWord"];
-            If[
-                INSD[] === $Failed,
-
+            INSD[] === $Failed,
+            FETE["DeletePrevious"],
+            
+            tok = LT @ INSD[];
+            FETE["MoveNext"];
+            \[Not] StringMatchQ[ tok, RE["^[ 	]*$"] ],
+            FETE["DeletePrevious"],
+            
+            True,
+            Do[
                 FETE["DeletePrevious"],
-
-                sel = LT @ INSD[];
-                FETE["MoveNext"];
-                If[
-                    \[Not] StringMatchQ[ sel, RE["^[ 	]*$"] ],
-
-                    FETE["DeletePrevious"],
-
-                    sel = StringReplace[sel, RE["^(	|    )*([ 	]+)$"] -> "$2"];
-                    Do[
-                        FETE["DeletePrevious"],
-                        {i, StringLength[sel]}
-                    ]
-                ];
-            ];
-        ];
+                { i, StringLength @ StringReplace[
+                    tok,
+                    RE["^(	|    )*([ 	]+)$"] -> "$2"
+                ] }
+            ]
+        ]
     ];
 ]
 
