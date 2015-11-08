@@ -7,26 +7,33 @@ With[
     {
         RE = RegularExpression,
         RB = RowBox,
+        FETE = FrontEndTokenExecute,
 
         INSD = InputShortcuts`Helper`InputNotebookSelectionData,
         CLS = InputShortcuts`Helper`CombineLeadingSpaces,
     
+        MLRB = InputShortcuts`MoveLineRealBeginning,
         DI = InputShortcuts`DecreaseIndent
     },
 
-    DI[] := Module[
+    DI[trySelect_ : True] := Module[
         { sel = INSD[] },
 
-        If[
+        Which[
             sel =!= $Failed,
             NotebookWrite[
                 InputNotebook[],
                 CLS[sel]
-                    /. s_String :> StringReplace[s, RE["^(.*\n[ 	]*)    $"] -> "$1"]
+                    /. s_String :> StringReplace[s, RE["^(.*\n[ 	]*)(    |	)$"] -> "$1"]
                     /. RB[{s_String, x__}]
-                        :> RB[{ StringReplace[s, RE["^([ 	]*)    $"] -> "$1"], x }],
+                        :> RB[{ StringReplace[s, RE["^([ 	]*)(    |	)$"] -> "$1"], x }],
                 All
-            ]
+            ],
+            
+            trySelect,
+            MLRB[]; FETE["SelectLineEnd"];
+            DI[False]; (* only try selecting once *)
+            FETE["MoveLineBeginning"]
         ];
     ];
 ]
