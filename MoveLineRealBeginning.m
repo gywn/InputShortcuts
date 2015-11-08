@@ -9,13 +9,13 @@ With[
         FETE = FrontEndTokenExecute,
 
         FT = InputShortcuts`Helper`FirstToken,
+        INSD = InputShortcuts`Helper`InputNotebookSelectionData,
 
         MLRB = InputShortcuts`MoveLineRealBeginning
     },
 
     MLRB[] := Module[
         {
-            nb = InputNotebook[],
             prev,
             curr = $Failed,
             fc
@@ -25,7 +25,7 @@ With[
         While[
             FETE["SelectPrevious"];
             prev = curr;
-            curr = ACV[ nb, "SelectionData" ];
+            curr = INSD[];
             curr =!= prev && curr =!= $Failed && FT[curr] =!= "\n"
         ];
         Which[

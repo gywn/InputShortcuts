@@ -10,6 +10,7 @@ With[
         FETE = FrontEndTokenExecute,
 
         LT = InputShortcuts`Helper`LastToken,
+        INSD = InputShortcuts`Helper`InputNotebookSelectionData,
 
         ADP = InputShortcuts`AdvancedDeletePrevious
     },
@@ -18,17 +19,17 @@ With[
         { sel },
 
         If[
-            ACV[ InputNotebook[], "SelectionData" ] =!= $Failed,
+            INSD[] =!= $Failed,
 
             FETE["DeletePrevious"],
 
             FETE["SelectPreviousWord"];
             If[
-                ACV[ InputNotebook[], "SelectionData" ] === $Failed,
+                INSD[] === $Failed,
 
                 FETE["DeletePrevious"],
 
-                sel = LT @ ACV[ InputNotebook[], "SelectionData" ];
+                sel = LT @ INSD[];
                 FETE["MoveNext"];
                 If[
                     \[Not] StringMatchQ[ sel, RE["^[ 	]*$"] ],

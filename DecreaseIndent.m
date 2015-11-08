@@ -10,20 +10,18 @@ With[
         ACV = AbsoluteCurrentValue,
 
         CLS = InputShortcuts`Helper`CombineLeadingSpaces,
-
+        INSD = InputShortcuts`Helper`InputNotebookSelectionData,
+    
         DI = InputShortcuts`DecreaseIndent
     },
 
     DI[] := Module[
-        {
-            nb = InputNotebook[],
-            sel = ACV[ InputNotebook[], "SelectionData" ]
-        },
+        { sel = INSD[] },
 
         If[
             sel =!= $Failed,
             NotebookWrite[
-                nb,
+                InputNotebook[],
                 CLS[sel]
                     /. s_String :> StringReplace[s, RE["^\n([ 	]*)    $"] -> "\n$1"]
                     /. RB[{s_String, x__}]

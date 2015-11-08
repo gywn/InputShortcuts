@@ -7,13 +7,15 @@ With[
     {
         ACV = AbsoluteCurrentValue,
         FETE = FrontEndTokenExecute,
+        
+        INSD = InputShortcuts`Helper`InputNotebookSelectionData,
 
         MLRB = InputShortcuts`MoveLineRealBeginning,
         SWLU = InputShortcuts`SelectWholeLineUp
     },
 
     SWLU[] := If[
-        ACV[ InputNotebook[], "SelectionData" ] === $Failed,
+        INSD[] === $Failed,
 
         FETE["MoveNextLine"]; MLRB[]; FETE["SelectPreviousLine"],
 

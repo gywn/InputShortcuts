@@ -3,6 +3,7 @@
 Begin["InputShortcuts`Private`"];
 
 
+<< "InputShortcuts/Helper/InputNotebookSelectionData.m"
 << "InputShortcuts/Helper/CombineLeadingSpaces.m"
 << "InputShortcuts/Helper/LastToken.m"
 << "InputShortcuts/Helper/FirstToken.m"
