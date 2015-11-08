@@ -5,7 +5,6 @@ Begin["InputShortcuts`Private`"];
 
 With[
     {
-        ACV = AbsoluteCurrentValue,
         FETE = FrontEndTokenExecute,
 
         FT = InputShortcuts`Helper`FirstToken,
@@ -17,8 +16,7 @@ With[
     MLRB[] := Module[
         {
             prev,
-            curr = $Failed,
-            fc
+            curr = $Failed
         },
 
         FETE["MoveLineBeginning"];

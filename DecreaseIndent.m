@@ -7,7 +7,6 @@ With[
     {
         RE = RegularExpression,
         RB = RowBox,
-        ACV = AbsoluteCurrentValue,
 
         CLS = InputShortcuts`Helper`CombineLeadingSpaces,
         INSD = InputShortcuts`Helper`InputNotebookSelectionData,

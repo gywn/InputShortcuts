@@ -5,7 +5,6 @@ Begin["InputShortcuts`Private`"];
 
 With[
     {
-        ACV = AbsoluteCurrentValue,
         FETE = FrontEndTokenExecute,
         
         INSD = InputShortcuts`Helper`InputNotebookSelectionData,

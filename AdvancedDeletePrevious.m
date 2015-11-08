@@ -6,7 +6,6 @@ Begin["InputShortcuts`Private`"];
 With[
     {
         RE = RegularExpression,
-        ACV = AbsoluteCurrentValue,
         FETE = FrontEndTokenExecute,
 
         LT = InputShortcuts`Helper`LastToken,

@@ -4,13 +4,9 @@ Begin["InputShortcuts`Private`"];
 
 
 With[
-    {
-        RB = RowBox,
+    {LT = InputShortcuts`Helper`LastToken},
 
-        LT = InputShortcuts`Helper`LastToken
-    },
-
-    LT @ RB[r_List] := LT @ Last[r];
+    LT @ RowBox[r_List] := LT @ Last[r];
     LT[s_String] := s;
     LT[_] := $Failed;
 ]
