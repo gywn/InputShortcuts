@@ -13,16 +13,14 @@ With[
         CLS = InputShortcuts`Helper`CombineLeadingSpaces,
         LT = InputShortcuts`Helper`LastToken,
         
+        MLRB = InputShortcuts`MoveLineRealBeginning,
         JL = InputShortcuts`JoinLines
     },
 
-    JL[] := Module[
+    JL[trySelect_ : True] := Module[
         { sel = INSD[] },
 
         Which[
-            sel === $Failed,
-            Null,
-            
             LT @ sel === "\n",
             NotebookWrite[
                 InputNotebook[],
@@ -35,13 +33,18 @@ With[
             ];
             FETE["MovePrevious"],
             
-            True,
+            sel =!= $Failed,
             NotebookWrite[
                 InputNotebook[],
                 CLS[sel]
                     /. s_String :> StringReplace[s, RE["^(.*)\n[ 	]*$"] -> "$1 "],
                 After
-            ]
+            ],
+            
+            trySelect,
+            MLRB[]; FETE["SelectLineEnd"]; FETE["SelectNextWord"];
+            JL[False]; (* only try selecting once *)
+            FETE["MovePreviousWord"]
         ];
     ];
 ]
