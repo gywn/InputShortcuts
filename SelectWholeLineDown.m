@@ -6,19 +6,19 @@ Begin["InputShortcuts`Private`"];
 With[
     {
         ACV = AbsoluteCurrentValue,
-        FTE = FrontEndTokenExecute,
+        FETE = FrontEndTokenExecute,
         
-        MB = InputShortcuts`MoveLineRealBeginning,
-        SD = InputShortcuts`SelectWholeLineDown
+        MLRB = InputShortcuts`MoveLineRealBeginning,
+        SWLD = InputShortcuts`SelectWholeLineDown
     },
 
-    SD[] := If[
+    SWLD[] := If[
         ACV[ InputNotebook[], "SelectionData" ] === $Failed,
  
-        MB[];
-        FTE["SelectNextLine"],
+        MLRB[];
+        FETE["SelectNextLine"],
         
-        FTE["SelectNextLine"]
+        FETE["SelectNextLine"]
     ];
 ]
 

@@ -8,10 +8,10 @@ With[
         RE = RegularExpression,
         RB = RowBox,
         
-        CS = InputShortcuts`Helper`CombineLeadingSpaces
+        CLS = InputShortcuts`Helper`CombineLeadingSpaces
     },
 
-    CS[sel_] := sel
+    CLS[sel_] := sel
         //. RB[{ hd___, RB[{in__}], tl___ }] :> RB[{ hd, in, tl }]
         //. RB[{ hd___, s1_String, s2_String, tl___ }]
             /; StringMatchQ[s1, RE @ "\n[ 	]*"]

@@ -7,37 +7,37 @@ With[
     {
         RE = RegularExpression,
         ACV = AbsoluteCurrentValue,
-        FTE = FrontEndTokenExecute,
+        FETE = FrontEndTokenExecute,
         
         LT = InputShortcuts`Helper`LastToken,
         
-        AD = InputShortcuts`AdvancedDeletePrevious
+        ADP = InputShortcuts`AdvancedDeletePrevious
     },
 
-    AD[] := Module[
+    ADP[] := Module[
         { sel },
         
         If[
             ACV[ InputNotebook[], "SelectionData" ] =!= $Failed,
             
-            FTE["DeletePrevious"],
+            FETE["DeletePrevious"],
         
-            FTE["SelectPreviousWord"];
+            FETE["SelectPreviousWord"];
             If[
                 ACV[ InputNotebook[], "SelectionData" ] === $Failed,
                 
-                FTE["DeletePrevious"],
+                FETE["DeletePrevious"],
                 
                 sel = LT @ ACV[ InputNotebook[], "SelectionData" ];
-                FTE["MoveNext"];
+                FETE["MoveNext"];
                 If[
                     \[Not] StringMatchQ[ sel, RE["^[ 	]*$"] ],
                     
-                    FTE["DeletePrevious"],
+                    FETE["DeletePrevious"],
                     
                     sel = StringReplace[sel, RE["^(	|    )*([ 	]+)$"] -> "$2"];
                     Do[
-                        FTE["DeletePrevious"],
+                        FETE["DeletePrevious"],
                         {i, StringLength[sel]}
                     ]
                 ];

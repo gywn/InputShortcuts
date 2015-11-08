@@ -9,7 +9,7 @@ With[
         RB = RowBox,
         ACV = AbsoluteCurrentValue,
         
-        CS = InputShortcuts`Helper`CombineLeadingSpaces,
+        CLS = InputShortcuts`Helper`CombineLeadingSpaces,
         
         II = InputShortcuts`IncreaseIndent
     },
@@ -24,7 +24,7 @@ With[
             sel =!= $Failed,
             NotebookWrite[
                 nb,
-                CS[sel]
+                CLS[sel]
                     /. s_String :> StringReplace[s, RE["^\n([ 	]*)$"] -> "\n$1    "]
                     /. RB[{x__}] :> RB[{"    ", x}]
                     /. RB[{x__, s_String}]

@@ -6,14 +6,14 @@ Begin["InputShortcuts`Private`"];
 With[
     {
         ACV = AbsoluteCurrentValue,
-        FTE = FrontEndTokenExecute,
+        FETE = FrontEndTokenExecute,
         
         FT = InputShortcuts`Helper`FirstToken,
         
-        MB = InputShortcuts`MoveLineRealBeginning
+        MLRB = InputShortcuts`MoveLineRealBeginning
     },
 
-    MB[] := Module[
+    MLRB[] := Module[
         {
             nb = InputNotebook[],
             prev,
@@ -21,9 +21,9 @@ With[
             fc
         },
         
-        FTE["MoveLineBeginning"];
+        FETE["MoveLineBeginning"];
         While[
-            FTE["SelectPrevious"];
+            FETE["SelectPrevious"];
             prev = curr;
             curr = ACV[ nb, "SelectionData" ];
             curr =!= prev && curr =!= $Failed && FT[curr] =!= "\n"
@@ -33,10 +33,10 @@ With[
             Null,
             
             FT[curr] === "\n",
-            FTE["MovePrevious"]; FTE["MoveNext"],
+            FETE["MovePrevious"]; FETE["MoveNext"],
             
             True,
-            FTE["MovePrevious"]
+            FETE["MovePrevious"]
         ];
     ];
 ]

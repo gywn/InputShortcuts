@@ -5,13 +5,13 @@ Begin["InputShortcuts`Private`"];
 
 With[
     {
-        FTE = FrontEndTokenExecute,
+        FETE = FrontEndTokenExecute,
         
-        MB = InputShortcuts`MoveLineRealBeginning,
-        DL = InputShortcuts`DeleteWholeLine
+        MLRB = InputShortcuts`MoveLineRealBeginning,
+        DWL = InputShortcuts`DeleteWholeLine
     },
     
-    DL[] := (MB[]; FTE["SelectNextLine"]; FTE["DeletePrevious"]; FTE["MovePrevious"]);
+    DWL[] := (MLRB[]; FETE["SelectNextLine"]; FETE["DeletePrevious"]; FETE["MovePrevious"]);
 ]
 
 
