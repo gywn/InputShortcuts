@@ -15,6 +15,7 @@ Begin["InputShortcuts`Private`"];
 << "InputShortcuts/SelectWholeLineDown.m"
 << "InputShortcuts/SelectWholeLineUp.m"
 << "InputShortcuts/DeleteWholeLine.m"
+<< "InputShortcuts/JoinLines.m"
 
 
 End[];
