@@ -13,10 +13,10 @@ With[
         CLS = InputShortcuts`Helper`CombineLeadingSpaces,
         LT = InputShortcuts`Helper`LastToken,
         
-        JI = InputShortcuts`JoinLines
+        JL = InputShortcuts`JoinLines
     },
 
-    JI[] := Module[
+    JL[] := Module[
         { sel = INSD[] },
 
         Which[
