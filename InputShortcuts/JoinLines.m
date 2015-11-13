@@ -33,7 +33,7 @@ With[
             ];
             FETE["MovePrevious"],
             
-            sel =!= $Failed,
+            sel =!= {},
             NotebookWrite[
                 InputNotebook[],
                 CLS[sel]

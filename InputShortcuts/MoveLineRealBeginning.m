@@ -16,7 +16,7 @@ With[
     MLRB[] := Module[
         {
             prev,
-            curr = $Failed
+            curr = {}
         },
 
         FETE["MoveLineBeginning"];
@@ -24,10 +24,10 @@ With[
             FETE["SelectPrevious"];
             prev = curr;
             curr = INSD[];
-            curr =!= prev && curr =!= $Failed && FT[curr] =!= "\n"
+            curr =!= prev && curr =!= {} && FT[curr] =!= "\n"
         ];
         Which[
-            curr === $Failed,
+            curr === {},
             Null,
 
             FT[curr] === "\n",

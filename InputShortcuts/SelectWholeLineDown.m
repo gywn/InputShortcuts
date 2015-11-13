@@ -14,7 +14,7 @@ With[
     },
 
     SWLD[] := If[
-        INSD[] === $Failed,
+        INSD[] === {},
 
         MLRB[];
         FETE["SelectNextLine"],

@@ -18,16 +18,19 @@ With[
         {tok},
 
         Which[
-            INSD[] =!= $Failed,
+            INSD[] =!= {},
             FETE["DeletePrevious"],
             
             FETE["SelectPreviousWord"];
-            INSD[] === $Failed,
+            INSD[] === {},
             FETE["DeletePrevious"],
             
             tok = LT @ INSD[];
             FETE["MoveNext"];
-            \[Not] StringMatchQ[ tok, RE["^(.*\n)?[ 	]*$"] ],
+            tok === $Failed,
+            FETE["DeletePrevious"],
+            
+            \[Not] StringMatchQ[ tok, RE["^(.*\n)?[ 	]+$"] ],
             FETE["DeletePrevious"],
             
             True,

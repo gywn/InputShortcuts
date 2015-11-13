@@ -20,7 +20,7 @@ With[
         { sel = INSD[] },
 
         Which[
-            sel =!= $Failed,
+            sel =!= {},
             NotebookWrite[
                 InputNotebook[],
                 CLS[sel]

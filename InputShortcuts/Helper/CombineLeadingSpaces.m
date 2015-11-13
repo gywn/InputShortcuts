@@ -11,7 +11,7 @@ With[
         CLS = InputShortcuts`Helper`CombineLeadingSpaces
     },
 
-    CLS[sel_] := sel
+    CLS[sel_] := RB[{sel}]
         //. RB[{ hd___, RB[{in__}], tl___ }] :> RB[{ hd, in, tl }]
         //. RB[{ hd___, s1_String, s2_String, tl___ }]
             /; StringMatchQ[s1, RE @ ".*\n[ 	]*"]

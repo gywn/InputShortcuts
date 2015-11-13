@@ -6,7 +6,7 @@ Begin["InputShortcuts`Private`"];
 With[
     {INSD = InputShortcuts`Helper`InputNotebookSelectionData},
 
-    INSD[] := AbsoluteCurrentValue[ InputNotebook[], "SelectionData" ];
+    INSD[] := NotebookRead @ InputNotebook[];
 ]
 
 
