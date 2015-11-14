@@ -24,10 +24,10 @@ With[
             NotebookWrite[
                 InputNotebook[],
                 CLS[sel]
-                    /. s_String :> StringReplace[s, RE["^(.*\n[ 	]*)$"] -> "$1    "]
-                    /. RB[{x__}] :> RB[{"    ", x}]
+                    /. s_String :> RuleCondition @ StringReplace[s, RE["^(.*\n[ 	]*)$"] -> "$1    "]
+                    /. RB[{x__}] :> RuleCondition @ RB[{"    ", x}]
                     /. RB[{x__, s_String}]
-                        :> RB[{ x, StringReplace[s, RE["^(.*\n[ 	]*)    $"] -> "$1"] }],
+                        :> RuleCondition @ RB[{ x, StringReplace[s, RE["^(.*\n[ 	]*)    $"] -> "$1"] }],
                 All
             ],
             
